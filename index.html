@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Hy-Mem: An Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: black;
+            color: #D8DDEF;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3E92CC, #D8DDEF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background-color: rgba(216, 221, 239, 0.05);
+            border: 1px solid rgba(62, 146, 204, 0.3);
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center py-12 md:py-20">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white">Project Hy-Mem</h1>
+            <p class="mt-4 text-xl md:text-2xl font-semibold gradient-text">A Self-Organizing Knowledge System for Next-Generation AI</p>
+        </header>
+        <main>
+            <section id="abstract" class="my-12 md:my-20">
+                 <div class="card rounded-xl p-8 shadow-lg max-w-4xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">Abstract</h2>
+                    <div class="space-y-4 text-base md:text-lg leading-relaxed">
+                        <p>Current AI architectures, including Retrieval-Augmented Generation (RAG) systems, are fundamentally constrained by a static memory paradigm. Information exists in a fixed, un-learned state with a definitive knowledge cut-off, forcing a reliance on computationally expensive context windows for continuity. This approach not only incurs significant operational costs but also prevents models from achieving true contextual understanding, leading to factual errors from outdated knowledge, which erodes user trust and introduces significant operational risk.</p>
+                        <p>Project Hy-Mem challenges this paradigm by introducing a multi-layered, hybrid cognitive architecture for persistent AI memory. The system is founded on a Symbolic Guardrail Layer, or "Ground Truth," where users can assert immutable, high-priority facts (e.g., safety constraints, core preferences) to ensure a baseline of predictable, personalized behavior.</p>
+                        <p>Layered upon this is the system's adaptive core: the "Living Embedding." These embeddings are dynamic entities that continuously reposition themselves within a vector hyperspace based on a tripartite scoring system: usage frequency (Alpha, α), a reinforcement learning-driven measure of utility and faithfulness (Phi, φ), and temporal decay (Delta, δ). This self-organizing process causes high-value, trusted information to form dense knowledge clusters. These clusters are complemented by an explicit Graph Knowledge Layer that maps factual, relational connections between entities, enabling complex, multi-hop reasoning.</p>
+                        <p>Key innovations include a proactive learning mechanism, Targeted Knowledge Enrichment, which uses cluster health monitoring to surgically fill knowledge gaps and eliminate the need for costly retraining. This is complemented by a cost-aware, four-tier storage model that aligns operational cost with data relevance, ensuring economic viability at scale.</p>
+                        <p>In essence, Hy-Mem presents a blueprint for "Memory 2.0", a shift from static information retrieval to a dynamic, self-organizing, and perpetually learning knowledge system. It provides the foundational architecture for creating truly persistent, personalized, and efficient AI systems.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="problem" class="my-12 md:my-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">The Problem: The Static Memory Barrier</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg">Current AI memory architectures are inefficient, costly, and unintelligent, creating a ceiling on AI's true potential.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="card rounded-xl p-6 shadow-lg">
+                        <div class="text-4xl mb-4">📚</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Static Vector Databases</h3>
+                        <p>Memory is a fixed library. The system can't learn which sources are useful, outdated, or untrustworthy.</p>
+                    </div>
+                    <div class="card rounded-xl p-6 shadow-lg">
+                        <div class="text-4xl mb-4">💰</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Brute-Force Context Windows</h3>
+                        <p>An incredibly expensive and slow solution that fails to create persistent memory, re-learning everything on every call.</p>
+                    </div>
+                    <div class="card rounded-xl p-6 shadow-lg">
+                        <div class="text-4xl mb-4">🔗</div>
+                        <h3 class="text-xl font-bold text-white mb-2">No Relational Understanding</h3>
+                        <p>Systems struggle with complex queries that require connecting multiple pieces of information across contexts.</p>
+                    </div>
+                </div>
+                 <div class="mt-12 card rounded-xl p-6 shadow-lg">
+                    <h3 class="text-xl md:text-2xl font-bold text-white text-center mb-4">The Cost of Static Memory</h3>
+                    <p class="text-center mb-6 max-w-2xl mx-auto">Static approaches are inefficient. Brute-force context windows often process vast amounts of redundant data, leading to higher costs and latency.</p>
+                    <div class="chart-container h-64 md:h-80">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="solution" class="my-12 md:my-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">The Solution: A Multi-Layered Cognitive Architecture</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg">Hy-Mem introduces a hybrid architecture that functions like an artificial hippocampus, enabling persistent, adaptive memory.</p>
+                </div>
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="card rounded-xl p-8 shadow-lg w-full md:w-2/3 text-center">
+                        <span class="text-sm font-bold gradient-text">LAYER 0</span>
+                        <h3 class="text-2xl font-bold text-white mt-1">Symbolic "Ground Truth"</h3>
+                        <p class="mt-2">A user-governed, rule-based layer for immutable facts like safety constraints and core preferences, providing a deterministic foundation.</p>
+                    </div>
+                    <div class="flow-arrow gradient-text">↓</div>
+                    <div class="card rounded-xl p-8 shadow-lg w-full md:w-2/3 text-center">
+                        <span class="text-sm font-bold gradient-text">LAYER 1</span>
+                        <h3 class="text-2xl font-bold text-white mt-1">Dynamic Vector Space</h3>
+                        <p class="mt-2">The adaptive core, populated by "Living Embeddings" that continuously reposition themselves in a self-organizing hyperspace based on a tripartite scoring system (α, φ, δ).</p>
+                    </div>
+                    <div class="flow-arrow gradient-text">↓</div>
+                    <div class="card rounded-xl p-8 shadow-lg w-full md:w-2/3 text-center">
+                        <span class="text-sm font-bold gradient-text">LAYER 2</span>
+                        <h3 class="text-2xl font-bold text-white mt-1">Graph Knowledge Layer</h3>
+                        <p class="mt-2">An explicit graph of entities and relationships that enables complex, multi-hop relational reasoning impossible with semantic retrieval alone.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="innovations" class="my-12 md:my-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Core Innovations</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg">Hy-Mem's novelty lies in four key areas that create a truly dynamic and intelligent system.</p>
+                </div>
+
+                <div class="card rounded-xl p-6 md:p-8 shadow-lg mb-12">
+                    <h3 class="text-xl md:text-2xl font-bold text-white text-center mb-2">The "Living Embedding" & Self-Organizing Hyperspace</h3>
+                    <p class="text-center mb-8 max-w-3xl mx-auto">The system learns what's important. High-value information forms dense clusters, while irrelevant data is pushed to the periphery, enabling faster, more accurate retrieval.</p>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="hyperspaceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card rounded-xl p-6 shadow-lg">
+                        <h3 class="text-xl font-bold text-white mb-4">Targeted Knowledge Enrichment</h3>
+                        <p class="mb-4">A proactive, self-healing pipeline that autonomously monitors knowledge health and surgically integrates new information to fill gaps, eliminating costly, full-scale retraining.</p>
+                        <div class="chart-container h-48">
+                             <canvas id="enrichmentChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card rounded-xl p-6 shadow-lg">
+                        <h3 class="text-xl font-bold text-white mb-4">User-Governed Memory</h3>
+                        <p>Explicit HCI mechanisms like `Remember` and `Forget` give users deterministic control over the AI's memory, fostering trust and a collaborative partnership.</p>
+                        <div class="flex justify-around items-center h-48 text-center">
+                            <div>
+                                <div class="text-5xl">🧠</div>
+                                <p class="mt-2 font-semibold text-white">Remember</p>
+                            </div>
+                            <div>
+                                <div class="text-5xl">🗑️</div>
+                                <p class="mt-2 font-semibold text-white">Forget</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card rounded-xl p-6 shadow-lg md:col-span-2 lg:col-span-1">
+                        <h3 class="text-xl font-bold text-white mb-4">Cost-Aware Tiered Storage</h3>
+                        <p class="mb-4">A four-tier storage model (Hot, Warm, Cold, Frozen) aligns the operational cost of data with its real-time relevance, ensuring economic viability at scale.</p>
+                         <div class="chart-container h-48">
+                             <canvas id="storageChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="research" class="my-12 md:my-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Key Research Questions</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg">Hy-Mem opens new frontiers for AI research, focusing on learning, optimization, and stability.</p>
+                </div>
+                <div class="space-y-6 max-w-3xl mx-auto">
+                    <div class="card rounded-xl p-6 shadow-lg">
+                        <p class="text-lg"><span class="font-bold text-white">1. Salience Modeling:</span> Can we train a model that, without direct supervision, learns to predict what information is important to commit to long-term memory?</p>
+                    </div>
+                    <div class="card rounded-xl p-6 shadow-lg">
+                        <p class="text-lg"><span class="font-bold text-white">2. Optimal Architecture:</span> What is the optimal policy for routing a query to the correct memory store (semantic vs. relational) and synthesizing the results?</p>
+                    </div>
+                    <div class="card rounded-xl p-6 shadow-lg">
+                        <p class="text-lg"><span class="font-bold text-white">3. Model Stability:</span> How can we prevent "catastrophic drift" in the self-organizing vector space, ensuring knowledge clusters do not become overly biased?</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center py-12 mt-12 border-t border-gray-700">
+            <p class="text-white font-bold text-lg">Project Hy-Mem</p>
+            <p class="text-sm">Mohanned T. Gomaa | August 22, 2025</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (label, maxWidth = 16) => {
+            if (typeof label !== 'string' || label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const chartTooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        const brilliantBlues = {
+            dark: '#000000',
+            medium: '#3E92CC',
+            light: '#D8DDEF',
+            white: '#FFFFFF',
+            accent: '#FFC914'
+        };
+
+        Chart.defaults.color = brilliantBlues.light;
+        Chart.defaults.borderColor = 'rgba(62, 146, 204, 0.3)';
+        Chart.defaults.font.family = "'Inter', sans-serif";
+
+        new Chart(document.getElementById('costChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Static RAG', wrapLabel('Large Context Window'), 'Hy-Mem'],
+                datasets: [{
+                    label: 'Relative Cost per Query',
+                    data: [65, 100, 15],
+                    backgroundColor: [brilliantBlues.medium, 'rgba(255, 201, 20, 0.2)', brilliantBlues.accent],
+                    borderColor: [brilliantBlues.medium, brilliantBlues.accent, brilliantBlues.accent],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                ...chartTooltipConfig,
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Relative Cost (Large Context = 100)', color: brilliantBlues.light },
+                        grid: { color: 'rgba(216, 221, 239, 0.2)' },
+                        ticks: { color: brilliantBlues.light }
+                    },
+                    y: {
+                        grid: { color: 'rgba(216, 221, 239, 0.1)' },
+                        ticks: { color: brilliantBlues.light }
+                    }
+                },
+                plugins: {
+                    ...chartTooltipConfig.plugins,
+                    legend: { display: false }
+                }
+            }
+        });
+
+        const generateClusterData = (count, centerX, centerY, spread) => {
+            const data = [];
+            for (let i = 0; i < count; i++) {
+                data.push({
+                    x: centerX + (Math.random() - 0.5) * spread,
+                    y: centerY + (Math.random() - 0.5) * spread
+                });
+            }
+            return data;
+        };
+
+        new Chart(document.getElementById('hyperspaceChart'), {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'High-Value Knowledge Cluster',
+                    data: generateClusterData(50, -0.6, 0.6, 0.5),
+                    backgroundColor: brilliantBlues.accent
+                }, {
+                    label: 'Related Knowledge Sub-Cluster',
+                    data: generateClusterData(30, 0.5, -0.4, 0.6),
+                    backgroundColor: brilliantBlues.medium
+                }, {
+                    label: 'Low-Value / Decayed Knowledge',
+                    data: generateClusterData(20, 0, 0, 2),
+                    backgroundColor: 'rgba(216, 221, 239, 0.2)'
+                }]
+            },
+            options: {
+                ...chartTooltipConfig,
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { display: false },
+                    y: { display: false }
+                },
+                plugins: {
+                    ...chartTooltipConfig.plugins,
+                    legend: {
+                        position: 'bottom',
+                        labels: { boxWidth: 12 }
+                    }
+                }
+            }
+        });
+        
+        new Chart(document.getElementById('enrichmentChart'), {
+            type: 'line',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q1 Next'],
+                datasets: [{
+                    label: 'Knowledge Cluster Health',
+                    data: [95, 92, 65, 70, 98],
+                    borderColor: brilliantBlues.accent,
+                    backgroundColor: 'rgba(255, 201, 20, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                ...chartTooltipConfig,
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { display: true, text: 'Health Score', color: brilliantBlues.light },
+                        grid: { color: 'rgba(216, 221, 239, 0.2)' },
+                        ticks: { color: brilliantBlues.light }
+                    },
+                    x: {
+                        grid: { color: 'rgba(216, 221, 239, 0.1)' },
+                        ticks: { color: brilliantBlues.light }
+                    }
+                },
+                plugins: {
+                    ...chartTooltipConfig.plugins,
+                    legend: { display: false }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('storageChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Data Volume', 'Operational Cost'],
+                datasets: [
+                    { label: 'Hot (In-Memory)', data: [5, 50], backgroundColor: brilliantBlues.accent },
+                    { label: 'Warm (SSD)', data: [15, 30], backgroundColor: brilliantBlues.medium },
+                    { label: 'Cold (Object)', data: [50, 15], backgroundColor: 'rgba(62, 146, 204, 0.5)' },
+                    { label: 'Frozen (Archive)', data: [30, 5], backgroundColor: 'rgba(216, 221, 239, 0.2)' }
+                ]
+            },
+            options: {
+                ...chartTooltipConfig,
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...chartTooltipConfig.plugins,
+                    legend: {
+                        position: 'bottom',
+                        labels: { boxWidth: 12 }
+                    }
+                },
+                scales: {
+                    x: { 
+                        stacked: true,
+                        grid: { color: 'rgba(216, 221, 239, 0.1)' },
+                        ticks: { color: brilliantBlues.light }
+                    },
+                    y: { 
+                        stacked: true, 
+                        title: { display: true, text: 'Relative %', color: brilliantBlues.light },
+                        grid: { color: 'rgba(216, 221, 239, 0.2)' },
+                        ticks: { color: brilliantBlues.light }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
