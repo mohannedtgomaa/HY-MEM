@@ -40,7 +40,7 @@
         }
 
         .card {
-            background-color: #111827; /* Changed to a solid, very dark gray */
+            background-color: rgba(216, 221, 239, 0.05);
             border: 1px solid rgba(62, 146, 204, 0.3);
         }
 
@@ -308,6 +308,7 @@
     </div>
 
     <script>
+        // I've also formatted the JavaScript code for better readability.
         // --- PART 1: THE LAWS OF PHYSICS (Hy-Mem Engine in JS) ---
         const sigmoid = (x) => 1 / (1 + Math.exp(-x));
         const calculateAlphaPrime = (alpha_raw, k_alpha = 0.1, alpha_0 = 5) => sigmoid(k_alpha * (alpha_raw - alpha_0));
