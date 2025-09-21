@@ -210,6 +210,217 @@
                     </div>
                 </div>
             </section>
+            
+            <!-- The Playground -->
+            <section id="sandbox">
+                <h2 class="text-3xl font-bold text-white text-center mb-8">The Playground (Sandbox)</h2>
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <div class="text-center mb-6">
+                        <p class="text-lg text-gray-300">Step 1: Train the Agent</p>
+                        <p class="text-gray-400 mb-4">Click "Like" 👍 on "Graph-Based RAG" articles and "Dislike" 👎 on "Keyword Search" articles to teach Hy-Mem your preferences.</p>
+                        <button id="reset-button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">Reset Memory</button>
+                    </div>
+                    <div id="documents-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                        <!-- Document cards will be injected here -->
+                    </div>
+    
+                    <div class="text-center mb-6">
+                        <p class="text-lg text-gray-300">Step 2: Run the A/B Test</p>
+                        <p class="text-gray-400 mb-4">Issue a broad query for "Tell me about RAG" and see how each agent responds.</p>
+                        <button id="search-button" class="bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">Run Generic Query</button>
+                    </div>
+    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-4 text-center">Static RAG Results</h3>
+                            <div id="static-results" class="space-y-3">
+                               <p class="text-gray-500 text-center">Run a query to see results.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-cyan-400 mb-4 text-center">Hy-Mem V11 Agent Results</h3>
+                            <div id="hymem-results" class="space-y-3">
+                                <p class="text-gray-500 text-center">Run a query to see results.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <script>
+            // --- PART 1: THE LAWS OF PHYSICS (Hy-Mem Engine in JS) ---
+            const sigmoid = (x) => 1 / (1 + Math.exp(-x));
+            const calculateAlphaPrime = (alpha_raw, k_alpha = 0.1, alpha_0 = 5) => sigmoid(k_alpha * (alpha_raw - alpha_0));
+            const calculatePhi = (phi_raw, k_phi = 0.5) => Math.tanh(k_phi * phi_raw);
+            const calculateScalar = (alpha_prime, phi, M = 0.8, phi_kill_threshold = -0.5) => {
+                if (phi < phi_kill_threshold) return 0.0;
+                return 1 + M * (alpha_prime * phi);
+            };
+    
+            // --- PART 2: THE ARENA (A Mini-World in JS) ---
+            const concepts = ["Vanilla RAG", "Graph-Based RAG", "Vector Search", "Keyword Search"];
+            let knowledgeBase = [];
+            let userState = {};
+    
+            const cosineSimilarity = (vecA, vecB) => {
+                const dotProduct = vecA.reduce((acc, val, i) => acc + val * vecB[i], 0);
+                const magA = Math.sqrt(vecA.reduce((acc, val) => acc + val * val, 0));
+                const magB = Math.sqrt(vecB.reduce((acc, val) => acc + val * val, 0));
+                if (magA === 0 || magB === 0) return 0;
+                return dotProduct / (magA * magB);
+            };
+    
+            const createWorld = () => {
+                knowledgeBase = [];
+                userState = {};
+                const centroids = {
+                    "Vanilla RAG": [0.8, 0.2, 0.1, 0.3],
+                    "Graph-Based RAG": [0.2, 0.8, 0.3, 0.1],
+                    "Vector Search": [0.7, 0.4, 0.2, 0.4],
+                    "Keyword Search": [0.1, 0.1, 0.9, 0.2]
+                };
+                for (let i = 0; i < 20; i++) {
+                    const concept = concepts[i % concepts.length];
+                    const centroid = centroids[concept];
+                    const vector = centroid.map(v => v + (Math.random() - 0.5) * 0.5);
+                    const norm = Math.sqrt(vector.reduce((acc, val) => acc + val * val, 0));
+                    const normalizedVector = vector.map(v => v / norm);
+                    knowledgeBase.push({
+                        id: i,
+                        title: `${concept} Doc #${i}`,
+                        concept: concept,
+                        vector: normalizedVector
+                    });
+                    userState[i] = { alpha_raw: 0, phi_raw: 0 };
+                }
+            };
+    
+            // --- PART 3: THE DEMO LOGIC ---
+            const documentsContainer = document.getElementById('documents-container');
+            const searchButton = document.getElementById('search-button');
+            const resetButton = document.getElementById('reset-button');
+            const staticResultsContainer = document.getElementById('static-results');
+            const hymemResultsContainer = document.getElementById('hymem-results');
+            
+            const renderDocuments = () => {
+                documentsContainer.innerHTML = '';
+                knowledgeBase.forEach(doc => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-gray-700 p-4 rounded-lg flex flex-col justify-between';
+                    
+                    let conceptColor = 'text-gray-400';
+                    if(doc.concept === 'Graph-Based RAG') conceptColor = 'text-cyan-400';
+                    if(doc.concept === 'Keyword Search') conceptColor = 'text-red-400';
+    
+                    card.innerHTML = `
+                        <div>
+                            <h4 class="font-bold text-white text-sm">${doc.title}</h4>
+                            <p class="text-xs ${conceptColor}">${doc.concept}</p>
+                        </div>
+                        <div class="flex justify-end space-x-2 mt-3">
+                            <button data-id="${doc.id}" data-feedback="like" class="like-btn bg-gray-600 hover:bg-green-500 p-1 rounded-full text-sm">👍</button>
+                            <button data-id="${doc.id}" data-feedback="dislike" class="dislike-btn bg-gray-600 hover:bg-red-500 p-1 rounded-full text-sm">👎</button>
+                        </div>
+                    `;
+                    documentsContainer.appendChild(card);
+                });
+            };
+    
+            const handleFeedback = (e) => {
+                if (!e.target.matches('.like-btn, .dislike-btn')) return;
+                const id = parseInt(e.target.dataset.id);
+                const feedback = e.target.dataset.feedback;
+    
+                userState[id].alpha_raw += 1;
+                if(feedback === 'like') {
+                    userState[id].phi_raw += 2;
+                    e.target.closest('.bg-gray-700').style.borderColor = '#22d3ee';
+                    e.target.closest('.bg-gray-700').style.borderWidth = '1px';
+                } else {
+                    userState[id].phi_raw -= 5;
+                     e.target.closest('.bg-gray-700').style.borderColor = '#f87171';
+                     e.target.closest('.bg-gray-700').style.borderWidth = '1px';
+                }
+                console.log(`Updated user state for ID ${id}:`, userState[id]);
+            };
+            
+            const runSearch = () => {
+                const queryVector = [0.5, 0.5, 0.2, 0.2]; // A truly broad query
+                
+                // Static RAG
+                let staticScores = knowledgeBase.map(doc => ({
+                    doc,
+                    score: cosineSimilarity(queryVector, doc.vector)
+                }));
+                staticScores.sort((a, b) => b.score - a.score);
+                renderResults(staticResultsContainer, staticScores.slice(0, 5));
+    
+                // Hy-Mem Agent
+                let hymemScores = knowledgeBase.map(doc => {
+                    const base_sim = cosineSimilarity(queryVector, doc.vector);
+                    const state = userState[doc.id];
+                    const alpha_p = calculateAlphaPrime(state.alpha_raw);
+                    const phi = calculatePhi(state.phi_raw);
+                    const scalar = calculateScalar(alpha_p, phi);
+                    const bonus = (scalar - 1.0) * 2.0; // personalization_strength
+                    return {
+                        doc,
+                        score: base_sim + bonus
+                    };
+                });
+                hymemScores.sort((a, b) => b.score - a.score);
+                renderResults(hymemResultsContainer, hymemScores.slice(0, 5));
+            };
+    
+            const renderResults = (container, results) => {
+                container.innerHTML = '';
+                if (results.length === 0) {
+                     container.innerHTML = '<p class="text-gray-500 text-center">No results found.</p>';
+                     return;
+                }
+                results.forEach(result => {
+                    const card = document.createElement('div');
+                    card.className = 'result-card bg-gray-700 p-3 rounded-lg text-sm';
+    
+                    let conceptColor = 'text-gray-400';
+                    if(result.doc.concept === 'Graph-Based RAG') conceptColor = 'text-cyan-400';
+                    if(result.doc.concept === 'Keyword Search') conceptColor = 'text-red-400';
+    
+                    card.innerHTML = `
+                        <p class="font-semibold text-white">${result.doc.title}</p>
+                        <p class="text-xs ${conceptColor}">${result.doc.concept}</p>
+                        <p class="text-xs text-gray-500 mt-1">Score: ${result.score.toFixed(4)}</p>
+                    `;
+                    container.appendChild(card);
+                });
+            };
+    
+            const initialize = () => {
+                createWorld();
+                renderDocuments();
+            };
+    
+            // Event Listeners
+            documentsContainer.addEventListener('click', handleFeedback);
+            searchButton.addEventListener('click', runSearch);
+            resetButton.addEventListener('click', () => {
+                console.log("Resetting memory...");
+                initialize();
+                staticResultsContainer.innerHTML = '<p class="text-gray-500 text-center">Run a query to see results.</p>';
+                hymemResultsContainer.innerHTML = '<p class="text-gray-500 text-center">Run a query to see results.</p>';
+            });
+    
+            // Initial load
+            initialize();
+    
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+
 
             <section id="about" class="my-12 md:my-20">
                 <div class="text-center mb-12">
