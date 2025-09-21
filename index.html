@@ -40,7 +40,7 @@
         }
 
         .card {
-            background-color: rgba(216, 221, 239, 0.05);
+            background-color: #111827; /* Changed to a solid, very dark gray */
             border: 1px solid rgba(62, 146, 204, 0.3);
         }
 
@@ -244,7 +244,7 @@
                             </div>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold text-cyan-400 mb-4 text-center">Hy-Mem Agent Results</h3>
+                            <h3 class="text-xl font-semibold text-cyan-400 mb-4 text-center">Hy-Mem V11 Agent Results</h3>
                             <div id="hymem-results" class="space-y-3">
                                 <p class="text-gray-500 text-center">Run a query to see results.</p>
                             </div>
@@ -308,7 +308,6 @@
     </div>
 
     <script>
-        // I've also formatted the JavaScript code for better readability.
         // --- PART 1: THE LAWS OF PHYSICS (Hy-Mem Engine in JS) ---
         const sigmoid = (x) => 1 / (1 + Math.exp(-x));
         const calculateAlphaPrime = (alpha_raw, k_alpha = 0.1, alpha_0 = 5) => sigmoid(k_alpha * (alpha_raw - alpha_0));
