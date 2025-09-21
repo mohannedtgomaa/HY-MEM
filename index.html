@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
             background-color: black;
             color: #D8DDEF;
         }
+
         .chart-container {
             position: relative;
             width: 100%;
@@ -24,26 +26,31 @@
             height: 300px;
             max-height: 400px;
         }
+
         @media (min-width: 768px) {
             .chart-container {
                 height: 350px;
             }
         }
+
         .gradient-text {
             background: linear-gradient(90deg, #3E92CC, #D8DDEF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         .card {
             background-color: rgba(216, 221, 239, 0.05);
             border: 1px solid rgba(62, 146, 204, 0.3);
         }
+
         .flow-arrow {
             font-size: 2rem;
             line-height: 1;
         }
     </style>
 </head>
+
 <body class="antialiased">
 
     <div class="container mx-auto p-4 md:p-8 max-w-7xl">
@@ -52,9 +59,10 @@
             <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white">Project Hy-Mem</h1>
             <p class="mt-4 text-xl md:text-2xl font-semibold gradient-text">A Self-Organizing Knowledge System for Next-Generation AI</p>
         </header>
+
         <main>
             <section id="abstract" class="my-12 md:my-20">
-                 <div class="card rounded-xl p-8 shadow-lg max-w-4xl mx-auto">
+                <div class="card rounded-xl p-8 shadow-lg max-w-4xl mx-auto">
                     <h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-6">Abstract</h2>
                     <div class="space-y-4 text-base md:text-lg leading-relaxed">
                         <p>Current AI architectures, including Retrieval-Augmented Generation (RAG) systems, are fundamentally constrained by a static memory paradigm. Information exists in a fixed, un-learned state with a definitive knowledge cut-off, forcing a reliance on computationally expensive context windows for continuity. This approach not only incurs significant operational costs but also prevents models from achieving true contextual understanding, leading to factual errors from outdated knowledge, which erodes user trust and introduces significant operational risk.</p>
@@ -88,7 +96,7 @@
                         <p>Systems struggle with complex queries that require connecting multiple pieces of information across contexts.</p>
                     </div>
                 </div>
-                 <div class="mt-12 card rounded-xl p-6 shadow-lg">
+                <div class="mt-12 card rounded-xl p-6 shadow-lg">
                     <h3 class="text-xl md:text-2xl font-bold text-white text-center mb-4">The Cost of Static Memory</h3>
                     <p class="text-center mb-6 max-w-2xl mx-auto">Static approaches are inefficient. Brute-force context windows often process vast amounts of redundant data, leading to higher costs and latency.</p>
                     <div class="chart-container h-64 md:h-80">
@@ -125,7 +133,7 @@
                         <span class="text-sm font-bold gradient-text">LAYER 3</span>
                         <h3 class="text-2xl font-bold text-white mt-1">Procedural Layer</h3>
                         <p class="mt-2">By remembering processes, not just facts, this layer allows Hy-Mem to bridge the gap between knowing what and understanding how.</p>
-                    </div>                    
+                    </div>
                 </div>
             </section>
 
@@ -148,7 +156,7 @@
                         <h3 class="text-xl font-bold text-white mb-4">Targeted Knowledge Enrichment</h3>
                         <p class="mb-4">A proactive, self-healing pipeline that autonomously monitors knowledge health and surgically integrates new information to fill gaps, eliminating costly, full-scale retraining.</p>
                         <div class="chart-container h-48">
-                             <canvas id="enrichmentChart"></canvas>
+                            <canvas id="enrichmentChart"></canvas>
                         </div>
                     </div>
                     <div class="card rounded-xl p-6 shadow-lg">
@@ -168,19 +176,19 @@
                     <div class="card rounded-xl p-6 shadow-lg md:col-span-2 lg:col-span-1">
                         <h3 class="text-xl font-bold text-white mb-4">Cost-Aware Tiered Storage</h3>
                         <p class="mb-4">A four-tier storage model (Hot, Warm, Cold, Frozen) aligns the operational cost of data with its real-time relevance, ensuring economic viability at scale.</p>
-                         <div class="chart-container h-48">
-                             <canvas id="storageChart"></canvas>
+                        <div class="chart-container h-48">
+                            <canvas id="storageChart"></canvas>
                         </div>
                     </div>
                 </div>
             </section>
-            
+
             <section id="research-vision" class="my-12 md:my-20">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white">Research Vision & Key Questions</h2>
                     <p class="mt-4 max-w-3xl mx-auto text-lg">The academic foundation of Hy-Mem is built on three core research pillars, each designed to answer a fundamental question about the future of AI:</p>
                 </div>
-            
+
                 <div class="space-y-8 max-w-3xl mx-auto">
                     <div class="card rounded-xl p-6 shadow-lg">
                         <h3 class="text-xl font-bold text-white">Pillar 1: Self-Adapting Algorithms</h3>
@@ -190,7 +198,7 @@
                             </li>
                         </ul>
                     </div>
-            
+
                     <div class="card rounded-xl p-6 shadow-lg">
                         <h3 class="text-xl font-bold text-white">Pillar 2: Computational & Energy Efficiency</h3>
                         <ul class="list-disc list-inside mt-2">
@@ -199,7 +207,7 @@
                             </li>
                         </ul>
                     </div>
-            
+
                     <div class="card rounded-xl p-6 shadow-lg">
                         <h3 class="text-xl font-bold text-white">Pillar 3: Autonomous Learning & Salience</h3>
                         <ul class="list-disc list-inside mt-2">
@@ -210,8 +218,7 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- The Playground -->
+
             <section id="sandbox">
                 <h2 class="text-3xl font-bold text-white text-center mb-8">The Playground (Sandbox)</h2>
                 <div class="bg-gray-800 p-8 rounded-lg">
@@ -221,20 +228,19 @@
                         <button id="reset-button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">Reset Memory</button>
                     </div>
                     <div id="documents-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                        <!-- Document cards will be injected here -->
-                    </div>
-    
+                        </div>
+
                     <div class="text-center mb-6">
                         <p class="text-lg text-gray-300">Step 2: Run the A/B Test</p>
                         <p class="text-gray-400 mb-4">Issue a broad query for "Tell me about RAG" and see how each agent responds.</p>
                         <button id="search-button" class="bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">Run Generic Query</button>
                     </div>
-    
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
                         <div>
                             <h3 class="text-xl font-semibold text-white mb-4 text-center">Static RAG Results</h3>
                             <div id="static-results" class="space-y-3">
-                               <p class="text-gray-500 text-center">Run a query to see results.</p>
+                                <p class="text-gray-500 text-center">Run a query to see results.</p>
                             </div>
                         </div>
                         <div>
@@ -246,181 +252,6 @@
                     </div>
                 </div>
             </section>
-
-        </div>
-
-        <script>
-            // --- PART 1: THE LAWS OF PHYSICS (Hy-Mem Engine in JS) ---
-            const sigmoid = (x) => 1 / (1 + Math.exp(-x));
-            const calculateAlphaPrime = (alpha_raw, k_alpha = 0.1, alpha_0 = 5) => sigmoid(k_alpha * (alpha_raw - alpha_0));
-            const calculatePhi = (phi_raw, k_phi = 0.5) => Math.tanh(k_phi * phi_raw);
-            const calculateScalar = (alpha_prime, phi, M = 0.8, phi_kill_threshold = -0.5) => {
-                if (phi < phi_kill_threshold) return 0.0;
-                return 1 + M * (alpha_prime * phi);
-            };
-    
-            // --- PART 2: THE ARENA (A Mini-World in JS) ---
-            const concepts = ["Vanilla RAG", "Graph-Based RAG", "Vector Search", "Keyword Search"];
-            let knowledgeBase = [];
-            let userState = {};
-    
-            const cosineSimilarity = (vecA, vecB) => {
-                const dotProduct = vecA.reduce((acc, val, i) => acc + val * vecB[i], 0);
-                const magA = Math.sqrt(vecA.reduce((acc, val) => acc + val * val, 0));
-                const magB = Math.sqrt(vecB.reduce((acc, val) => acc + val * val, 0));
-                if (magA === 0 || magB === 0) return 0;
-                return dotProduct / (magA * magB);
-            };
-    
-            const createWorld = () => {
-                knowledgeBase = [];
-                userState = {};
-                const centroids = {
-                    "Vanilla RAG": [0.8, 0.2, 0.1, 0.3],
-                    "Graph-Based RAG": [0.2, 0.8, 0.3, 0.1],
-                    "Vector Search": [0.7, 0.4, 0.2, 0.4],
-                    "Keyword Search": [0.1, 0.1, 0.9, 0.2]
-                };
-                for (let i = 0; i < 20; i++) {
-                    const concept = concepts[i % concepts.length];
-                    const centroid = centroids[concept];
-                    const vector = centroid.map(v => v + (Math.random() - 0.5) * 0.5);
-                    const norm = Math.sqrt(vector.reduce((acc, val) => acc + val * val, 0));
-                    const normalizedVector = vector.map(v => v / norm);
-                    knowledgeBase.push({
-                        id: i,
-                        title: `${concept} Doc #${i}`,
-                        concept: concept,
-                        vector: normalizedVector
-                    });
-                    userState[i] = { alpha_raw: 0, phi_raw: 0 };
-                }
-            };
-    
-            // --- PART 3: THE DEMO LOGIC ---
-            const documentsContainer = document.getElementById('documents-container');
-            const searchButton = document.getElementById('search-button');
-            const resetButton = document.getElementById('reset-button');
-            const staticResultsContainer = document.getElementById('static-results');
-            const hymemResultsContainer = document.getElementById('hymem-results');
-            
-            const renderDocuments = () => {
-                documentsContainer.innerHTML = '';
-                knowledgeBase.forEach(doc => {
-                    const card = document.createElement('div');
-                    card.className = 'bg-gray-700 p-4 rounded-lg flex flex-col justify-between';
-                    
-                    let conceptColor = 'text-gray-400';
-                    if(doc.concept === 'Graph-Based RAG') conceptColor = 'text-cyan-400';
-                    if(doc.concept === 'Keyword Search') conceptColor = 'text-red-400';
-    
-                    card.innerHTML = `
-                        <div>
-                            <h4 class="font-bold text-white text-sm">${doc.title}</h4>
-                            <p class="text-xs ${conceptColor}">${doc.concept}</p>
-                        </div>
-                        <div class="flex justify-end space-x-2 mt-3">
-                            <button data-id="${doc.id}" data-feedback="like" class="like-btn bg-gray-600 hover:bg-green-500 p-1 rounded-full text-sm">👍</button>
-                            <button data-id="${doc.id}" data-feedback="dislike" class="dislike-btn bg-gray-600 hover:bg-red-500 p-1 rounded-full text-sm">👎</button>
-                        </div>
-                    `;
-                    documentsContainer.appendChild(card);
-                });
-            };
-    
-            const handleFeedback = (e) => {
-                if (!e.target.matches('.like-btn, .dislike-btn')) return;
-                const id = parseInt(e.target.dataset.id);
-                const feedback = e.target.dataset.feedback;
-    
-                userState[id].alpha_raw += 1;
-                if(feedback === 'like') {
-                    userState[id].phi_raw += 2;
-                    e.target.closest('.bg-gray-700').style.borderColor = '#22d3ee';
-                    e.target.closest('.bg-gray-700').style.borderWidth = '1px';
-                } else {
-                    userState[id].phi_raw -= 5;
-                     e.target.closest('.bg-gray-700').style.borderColor = '#f87171';
-                     e.target.closest('.bg-gray-700').style.borderWidth = '1px';
-                }
-                console.log(`Updated user state for ID ${id}:`, userState[id]);
-            };
-            
-            const runSearch = () => {
-                const queryVector = [0.5, 0.5, 0.2, 0.2]; // A truly broad query
-                
-                // Static RAG
-                let staticScores = knowledgeBase.map(doc => ({
-                    doc,
-                    score: cosineSimilarity(queryVector, doc.vector)
-                }));
-                staticScores.sort((a, b) => b.score - a.score);
-                renderResults(staticResultsContainer, staticScores.slice(0, 5));
-    
-                // Hy-Mem Agent
-                let hymemScores = knowledgeBase.map(doc => {
-                    const base_sim = cosineSimilarity(queryVector, doc.vector);
-                    const state = userState[doc.id];
-                    const alpha_p = calculateAlphaPrime(state.alpha_raw);
-                    const phi = calculatePhi(state.phi_raw);
-                    const scalar = calculateScalar(alpha_p, phi);
-                    const bonus = (scalar - 1.0) * 2.0; // personalization_strength
-                    return {
-                        doc,
-                        score: base_sim + bonus
-                    };
-                });
-                hymemScores.sort((a, b) => b.score - a.score);
-                renderResults(hymemResultsContainer, hymemScores.slice(0, 5));
-            };
-    
-            const renderResults = (container, results) => {
-                container.innerHTML = '';
-                if (results.length === 0) {
-                     container.innerHTML = '<p class="text-gray-500 text-center">No results found.</p>';
-                     return;
-                }
-                results.forEach(result => {
-                    const card = document.createElement('div');
-                    card.className = 'result-card bg-gray-700 p-3 rounded-lg text-sm';
-    
-                    let conceptColor = 'text-gray-400';
-                    if(result.doc.concept === 'Graph-Based RAG') conceptColor = 'text-cyan-400';
-                    if(result.doc.concept === 'Keyword Search') conceptColor = 'text-red-400';
-    
-                    card.innerHTML = `
-                        <p class="font-semibold text-white">${result.doc.title}</p>
-                        <p class="text-xs ${conceptColor}">${result.doc.concept}</p>
-                        <p class="text-xs text-gray-500 mt-1">Score: ${result.score.toFixed(4)}</p>
-                    `;
-                    container.appendChild(card);
-                });
-            };
-    
-            const initialize = () => {
-                createWorld();
-                renderDocuments();
-            };
-    
-            // Event Listeners
-            documentsContainer.addEventListener('click', handleFeedback);
-            searchButton.addEventListener('click', runSearch);
-            resetButton.addEventListener('click', () => {
-                console.log("Resetting memory...");
-                initialize();
-                staticResultsContainer.innerHTML = '<p class="text-gray-500 text-center">Run a query to see results.</p>';
-                hymemResultsContainer.innerHTML = '<p class="text-gray-500 text-center">Run a query to see results.</p>';
-            });
-    
-            // Initial load
-            initialize();
-    
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-
 
             <section id="about" class="my-12 md:my-20">
                 <div class="text-center mb-12">
@@ -438,38 +269,216 @@
                         <p class="mt-3 text-base leading-relaxed">
                             My work has delivered over $25M in impact across 40+ deployments, including a $7M municipal command & control platform and AI tools that increased sales conversion by 14%. My current research, detailed in Project Hy-Mem, moves beyond conventional RAG to create dynamic AI systems with true long-term memory and autonomous learning capabilities.
                         </p>
-                         <p class="mt-3 text-base leading-relaxed">
+                        <p class="mt-3 text-base leading-relaxed">
                             If you're building the future of AI, from sovereign LLM infrastructure to intelligent systems at scale, let's connect.
                         </p>
                         <div class="mt-6 flex items-center justify-center md:justify-start space-x-5">
                             <a href="mailto:mo@vectorscalar.ai" title="Email" class="text-gray-400 hover:gradient-text transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
                             </a>
                             <a href="https://www.linkedin.com/in/mohannedtgomaa/" title="LinkedIn" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:gradient-text transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                                </svg>
                             </a>
-                             <a href="https://orcid.org/0009-0004-3222-3759" title="ORCID" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:gradient-text transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.603 4.2h1.313v11.305H7.603V4.2zm2.632 0h1.312v11.305h-1.312V4.2zm2.632 0h1.312v11.305h-1.312V4.2zM12 17.43c-3.11 0-5.64-2.53-5.64-5.64s2.53-5.64 5.64-5.64 5.64 2.53 5.64 5.64-2.53 5.64-5.64 5.64z"/></svg>
+                            <a href="https://orcid.org/0009-0004-3222-3759" title="ORCID" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:gradient-text transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.603 4.2h1.313v11.305H7.603V4.2zm2.632 0h1.312v11.305h-1.312V4.2zm2.632 0h1.312v11.305h-1.312V4.2zM12 17.43c-3.11 0-5.64-2.53-5.64-5.64s2.53-5.64 5.64-5.64 5.64 2.53 5.64 5.64-2.53 5.64-5.64 5.64z" />
+                                </svg>
                             </a>
                             <a href="https://www.mo-gomaa.com" title="Website" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:gradient-text transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                </svg>
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
-            
         </main>
 
         <footer class="text-center py-12 mt-12 border-t border-gray-700">
             <p class="text-white font-bold text-lg">Project Hy-Mem</p>
             <p class="text-sm">Mohanned T. Gomaa | ORCID:0009-0004-3222-3759 | August 22, 2025 </p>
-            <p class="text-sm">© 2025 Mohanned Tarek Gomaa™. All rights reserved. The content, architecture, and code described on this site are the proprietary intellectual property of the author. No part of this work may be reproduced without explicit permission. </p> 
+            <p class="text-sm">© 2025 Mohanned Tarek Gomaa™. All rights reserved. The content, architecture, and code described on this site are the proprietary intellectual property of the author. No part of this work may be reproduced without explicit permission. </p>
         </footer>
 
     </div>
 
     <script>
+        // I've also formatted the JavaScript code for better readability.
+        // --- PART 1: THE LAWS OF PHYSICS (Hy-Mem Engine in JS) ---
+        const sigmoid = (x) => 1 / (1 + Math.exp(-x));
+        const calculateAlphaPrime = (alpha_raw, k_alpha = 0.1, alpha_0 = 5) => sigmoid(k_alpha * (alpha_raw - alpha_0));
+        const calculatePhi = (phi_raw, k_phi = 0.5) => Math.tanh(k_phi * phi_raw);
+        const calculateScalar = (alpha_prime, phi, M = 0.8, phi_kill_threshold = -0.5) => {
+            if (phi < phi_kill_threshold) return 0.0;
+            return 1 + M * (alpha_prime * phi);
+        };
+
+        // --- PART 2: THE ARENA (A Mini-World in JS) ---
+        const concepts = ["Vanilla RAG", "Graph-Based RAG", "Vector Search", "Keyword Search"];
+        let knowledgeBase = [];
+        let userState = {};
+
+        const cosineSimilarity = (vecA, vecB) => {
+            const dotProduct = vecA.reduce((acc, val, i) => acc + val * vecB[i], 0);
+            const magA = Math.sqrt(vecA.reduce((acc, val) => acc + val * val, 0));
+            const magB = Math.sqrt(vecB.reduce((acc, val) => acc + val * val, 0));
+            if (magA === 0 || magB === 0) return 0;
+            return dotProduct / (magA * magB);
+        };
+
+        const createWorld = () => {
+            knowledgeBase = [];
+            userState = {};
+            const centroids = {
+                "Vanilla RAG": [0.8, 0.2, 0.1, 0.3],
+                "Graph-Based RAG": [0.2, 0.8, 0.3, 0.1],
+                "Vector Search": [0.7, 0.4, 0.2, 0.4],
+                "Keyword Search": [0.1, 0.1, 0.9, 0.2]
+            };
+            for (let i = 0; i < 20; i++) {
+                const concept = concepts[i % concepts.length];
+                const centroid = centroids[concept];
+                const vector = centroid.map(v => v + (Math.random() - 0.5) * 0.5);
+                const norm = Math.sqrt(vector.reduce((acc, val) => acc + val * val, 0));
+                const normalizedVector = vector.map(v => v / norm);
+                knowledgeBase.push({
+                    id: i,
+                    title: `${concept} Doc #${i}`,
+                    concept: concept,
+                    vector: normalizedVector
+                });
+                userState[i] = {
+                    alpha_raw: 0,
+                    phi_raw: 0
+                };
+            }
+        };
+
+        // --- PART 3: THE DEMO LOGIC ---
+        const documentsContainer = document.getElementById('documents-container');
+        const searchButton = document.getElementById('search-button');
+        const resetButton = document.getElementById('reset-button');
+        const staticResultsContainer = document.getElementById('static-results');
+        const hymemResultsContainer = document.getElementById('hymem-results');
+
+        const renderDocuments = () => {
+            documentsContainer.innerHTML = '';
+            knowledgeBase.forEach(doc => {
+                const card = document.createElement('div');
+                card.className = 'bg-gray-700 p-4 rounded-lg flex flex-col justify-between';
+
+                let conceptColor = 'text-gray-400';
+                if (doc.concept === 'Graph-Based RAG') conceptColor = 'text-cyan-400';
+                if (doc.concept === 'Keyword Search') conceptColor = 'text-red-400';
+
+                card.innerHTML = `
+                    <div>
+                        <h4 class="font-bold text-white text-sm">${doc.title}</h4>
+                        <p class="text-xs ${conceptColor}">${doc.concept}</p>
+                    </div>
+                    <div class="flex justify-end space-x-2 mt-3">
+                        <button data-id="${doc.id}" data-feedback="like" class="like-btn bg-gray-600 hover:bg-green-500 p-1 rounded-full text-sm">👍</button>
+                        <button data-id="${doc.id}" data-feedback="dislike" class="dislike-btn bg-gray-600 hover:bg-red-500 p-1 rounded-full text-sm">👎</button>
+                    </div>
+                `;
+                documentsContainer.appendChild(card);
+            });
+        };
+
+        const handleFeedback = (e) => {
+            if (!e.target.matches('.like-btn, .dislike-btn')) return;
+            const id = parseInt(e.target.dataset.id);
+            const feedback = e.target.dataset.feedback;
+
+            userState[id].alpha_raw += 1;
+            if (feedback === 'like') {
+                userState[id].phi_raw += 2;
+                e.target.closest('.bg-gray-700').style.borderColor = '#22d3ee';
+                e.target.closest('.bg-gray-700').style.borderWidth = '1px';
+            } else {
+                userState[id].phi_raw -= 5;
+                e.target.closest('.bg-gray-700').style.borderColor = '#f87171';
+                e.target.closest('.bg-gray-700').style.borderWidth = '1px';
+            }
+            console.log(`Updated user state for ID ${id}:`, userState[id]);
+        };
+
+        const runSearch = () => {
+            const queryVector = [0.5, 0.5, 0.2, 0.2]; // A truly broad query
+
+            // Static RAG
+            let staticScores = knowledgeBase.map(doc => ({
+                doc,
+                score: cosineSimilarity(queryVector, doc.vector)
+            }));
+            staticScores.sort((a, b) => b.score - a.score);
+            renderResults(staticResultsContainer, staticScores.slice(0, 5));
+
+            // Hy-Mem Agent
+            let hymemScores = knowledgeBase.map(doc => {
+                const base_sim = cosineSimilarity(queryVector, doc.vector);
+                const state = userState[doc.id];
+                const alpha_p = calculateAlphaPrime(state.alpha_raw);
+                const phi = calculatePhi(state.phi_raw);
+                const scalar = calculateScalar(alpha_p, phi);
+                const bonus = (scalar - 1.0) * 2.0; // personalization_strength
+                return {
+                    doc,
+                    score: base_sim + bonus
+                };
+            });
+            hymemScores.sort((a, b) => b.score - a.score);
+            renderResults(hymemResultsContainer, hymemScores.slice(0, 5));
+        };
+
+        const renderResults = (container, results) => {
+            container.innerHTML = '';
+            if (results.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center">No results found.</p>';
+                return;
+            }
+            results.forEach(result => {
+                const card = document.createElement('div');
+                card.className = 'result-card bg-gray-700 p-3 rounded-lg text-sm';
+
+                let conceptColor = 'text-gray-400';
+                if (result.doc.concept === 'Graph-Based RAG') conceptColor = 'text-cyan-400';
+                if (result.doc.concept === 'Keyword Search') conceptColor = 'text-red-400';
+
+                card.innerHTML = `
+                    <p class="font-semibold text-white">${result.doc.title}</p>
+                    <p class="text-xs ${conceptColor}">${result.doc.concept}</p>
+                    <p class="text-xs text-gray-500 mt-1">Score: ${result.score.toFixed(4)}</p>
+                `;
+                container.appendChild(card);
+            });
+        };
+
+        const initialize = () => {
+            createWorld();
+            renderDocuments();
+        };
+
+        // Event Listeners
+        documentsContainer.addEventListener('click', handleFeedback);
+        searchButton.addEventListener('click', runSearch);
+        resetButton.addEventListener('click', () => {
+            console.log("Resetting memory...");
+            initialize();
+            staticResultsContainer.innerHTML = '<p class="text-gray-500 text-center">Run a query to see results.</p>';
+            hymemResultsContainer.innerHTML = '<p class="text-gray-500 text-center">Run a query to see results.</p>';
+        });
+
+        // Initial load
+        initialize();
+    </script>
+    <script>
+        // Chart rendering script
         const wrapLabel = (label, maxWidth = 16) => {
             if (typeof label !== 'string' || label.length <= maxWidth) {
                 return label;
@@ -537,18 +546,32 @@
                 scales: {
                     x: {
                         beginAtZero: true,
-                        title: { display: true, text: 'Relative Cost (Large Context = 100)', color: brilliantBlues.light },
-                        grid: { color: 'rgba(216, 221, 239, 0.2)' },
-                        ticks: { color: brilliantBlues.light }
+                        title: {
+                            display: true,
+                            text: 'Relative Cost (Large Context = 100)',
+                            color: brilliantBlues.light
+                        },
+                        grid: {
+                            color: 'rgba(216, 221, 239, 0.2)'
+                        },
+                        ticks: {
+                            color: brilliantBlues.light
+                        }
                     },
                     y: {
-                        grid: { color: 'rgba(216, 221, 239, 0.1)' },
-                        ticks: { color: brilliantBlues.light }
+                        grid: {
+                            color: 'rgba(216, 221, 239, 0.1)'
+                        },
+                        ticks: {
+                            color: brilliantBlues.light
+                        }
                     }
                 },
                 plugins: {
                     ...chartTooltipConfig.plugins,
-                    legend: { display: false }
+                    legend: {
+                        display: false
+                    }
                 }
             }
         });
@@ -586,19 +609,25 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    x: { display: false },
-                    y: { display: false }
+                    x: {
+                        display: false
+                    },
+                    y: {
+                        display: false
+                    }
                 },
                 plugins: {
                     ...chartTooltipConfig.plugins,
                     legend: {
                         position: 'bottom',
-                        labels: { boxWidth: 12 }
+                        labels: {
+                            boxWidth: 12
+                        }
                     }
                 }
             }
         });
-        
+
         new Chart(document.getElementById('enrichmentChart'), {
             type: 'line',
             data: {
@@ -620,18 +649,32 @@
                     y: {
                         beginAtZero: true,
                         max: 100,
-                        title: { display: true, text: 'Health Score', color: brilliantBlues.light },
-                        grid: { color: 'rgba(216, 221, 239, 0.2)' },
-                        ticks: { color: brilliantBlues.light }
+                        title: {
+                            display: true,
+                            text: 'Health Score',
+                            color: brilliantBlues.light
+                        },
+                        grid: {
+                            color: 'rgba(216, 221, 239, 0.2)'
+                        },
+                        ticks: {
+                            color: brilliantBlues.light
+                        }
                     },
                     x: {
-                        grid: { color: 'rgba(216, 221, 239, 0.1)' },
-                        ticks: { color: brilliantBlues.light }
+                        grid: {
+                            color: 'rgba(216, 221, 239, 0.1)'
+                        },
+                        ticks: {
+                            color: brilliantBlues.light
+                        }
                     }
                 },
                 plugins: {
                     ...chartTooltipConfig.plugins,
-                    legend: { display: false }
+                    legend: {
+                        display: false
+                    }
                 }
             }
         });
@@ -640,12 +683,23 @@
             type: 'bar',
             data: {
                 labels: ['Data Volume', 'Operational Cost'],
-                datasets: [
-                    { label: 'Hot (In-Memory)', data: [5, 50], backgroundColor: brilliantBlues.accent },
-                    { label: 'Warm (SSD)', data: [15, 30], backgroundColor: brilliantBlues.medium },
-                    { label: 'Cold (Object)', data: [50, 15], backgroundColor: 'rgba(62, 146, 204, 0.5)' },
-                    { label: 'Frozen (Archive)', data: [30, 5], backgroundColor: 'rgba(216, 221, 239, 0.2)' }
-                ]
+                datasets: [{
+                    label: 'Hot (In-Memory)',
+                    data: [5, 50],
+                    backgroundColor: brilliantBlues.accent
+                }, {
+                    label: 'Warm (SSD)',
+                    data: [15, 30],
+                    backgroundColor: brilliantBlues.medium
+                }, {
+                    label: 'Cold (Object)',
+                    data: [50, 15],
+                    backgroundColor: 'rgba(62, 146, 204, 0.5)'
+                }, {
+                    label: 'Frozen (Archive)',
+                    data: [30, 5],
+                    backgroundColor: 'rgba(216, 221, 239, 0.2)'
+                }]
             },
             options: {
                 ...chartTooltipConfig,
@@ -655,24 +709,39 @@
                     ...chartTooltipConfig.plugins,
                     legend: {
                         position: 'bottom',
-                        labels: { boxWidth: 12 }
+                        labels: {
+                            boxWidth: 12
+                        }
                     }
                 },
                 scales: {
-                    x: { 
+                    x: {
                         stacked: true,
-                        grid: { color: 'rgba(216, 221, 239, 0.1)' },
-                        ticks: { color: brilliantBlues.light }
+                        grid: {
+                            color: 'rgba(216, 221, 239, 0.1)'
+                        },
+                        ticks: {
+                            color: brilliantBlues.light
+                        }
                     },
-                    y: { 
-                        stacked: true, 
-                        title: { display: true, text: 'Relative %', color: brilliantBlues.light },
-                        grid: { color: 'rgba(216, 221, 239, 0.2)' },
-                        ticks: { color: brilliantBlues.light }
+                    y: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Relative %',
+                            color: brilliantBlues.light
+                        },
+                        grid: {
+                            color: 'rgba(216, 221, 239, 0.2)'
+                        },
+                        ticks: {
+                            color: brilliantBlues.light
+                        }
                     }
                 }
             }
         });
     </script>
 </body>
+
 </html>
